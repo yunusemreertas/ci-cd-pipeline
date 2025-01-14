@@ -21,5 +21,7 @@ jobs:
 
       # Step 3: Deploy to Render
       - name: Deploy to Render
+        env:
+          DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }} # Use your GitHub secret for deploy
         run: |
-          curl -X POST "https://api.render.com/deploy/srv-cu3cici3esus73df7f3g?key=a8IqWMCoiGU"
+          curl -X POST "$DEPLOY_URL"

@@ -25,7 +25,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      # Step 4: Build App (Optional)
+      # Step 4: Build App (Optional, but if you need it for the tests)
       - name: Build App
         run: npm run build
 
