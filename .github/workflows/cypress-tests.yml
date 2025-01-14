@@ -1,4 +1,4 @@
-name: Run Cypress Component Tests
+name: Cypress Tests
 
 on:
   pull_request:
@@ -6,24 +6,29 @@ on:
       - develop
 
 jobs:
-  cypress-tests:
+  test:
+    name: Cypress Tests
     runs-on: ubuntu-latest
 
     steps:
-      # Check out the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+      # Step 1: Checkout the Code
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      # Set up Node.js
+      # Step 2: Set up Node.js
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: 22.x # Ensure you're using the correct version that your project needs
 
-      # Install dependencies
-      - name: Install dependencies
+      # Step 3: Install Dependencies
+      - name: Install Dependencies
         run: npm install
 
-      # Run Cypress tests
-      - name: Run Cypress Component Tests
-        run: npm run test-component
+      # Step 4: Build App (Optional)
+      - name: Build App
+        run: npm run build
+
+      # Step 5: Run Cypress Tests
+      - name: Run Cypress Tests
+        run: npm run test-component # Assuming `npm run test-component` is your command for Cypress tests

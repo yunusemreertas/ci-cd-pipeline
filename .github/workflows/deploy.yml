@@ -1,4 +1,4 @@
-name: Deploy to Render
+name: Deploy To Render
 
 on:
   push:
@@ -6,27 +6,22 @@ on:
       - main
 
 jobs:
-  deploy:
+  ci:
+    name: Deploy To Render
     runs-on: ubuntu-latest
-
     steps:
-      # Check out the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+      # Step 1: Checkout the Code
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
-      # Install dependencies
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "18"
+      # Step 2: Install Dependencies
+      - name: Install Dependencies
+        run: |
+          npm install
 
-      # Build the app
-      - name: Build the application
-        run: npm run build
-
-      # Deploy the app using Render
+      # Step 3: Deploy to Render
       - name: Deploy to Render
         env:
-          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          DEPLOY_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }} # Use your secret key for deploy
         run: |
           curl -X POST "https://api.render.com/deploy/srv-cu3cici3esus73df7f3g?key=a8IqWMCoiGU"
