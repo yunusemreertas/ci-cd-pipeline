@@ -5,6 +5,9 @@ this is testtt
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
+## Deployed App
+https://ci-cd-pipeline-fajb.onrender.com/
+
 ## Walkthrough Video
 
 Walkthrough video is in the repository.
